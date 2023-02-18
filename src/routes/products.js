@@ -5,14 +5,14 @@ const router = express.Router();
 
 // ************ Controller Require ************
 const productsController = require('../controllers/productsController');
-
+const { uploadImageProduct } = require('../middlewares/upload');
 
 /*** GET ALL PRODUCTS ***/ 
 router.get('/', productsController.index); 
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', productsController.create); 
-router.post('/', productsController.store); 
+router.post('/', uploadImageProduct.single('image'), productsController.store); 
 
 
 /*** GET ONE PRODUCT ***/ 
@@ -20,7 +20,7 @@ router.get('/detail/:id/', productsController.detail);
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productsController.edit); 
-router.put('/edit/:id', productsController.update); 
+router.put('/edit/:id', uploadImageProduct.single('image'), productsController.update); 
 
 
 /*** DELETE ONE PRODUCT***/ 

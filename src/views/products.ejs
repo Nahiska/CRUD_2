@@ -22,9 +22,9 @@
 								<img src="/images/products/<%- product.image %>" alt="imagen de producto">
 							</figure>
 							<article class="product-box_data">
-								<h2><%- toThousand(product.prince - (product.price * product.discount / 100)) %></h2>
+								<h2>$<%- toThousand(product.price - (product.price * product.discount / 100)) %></h2>
 									<% if (product.discount > 0) { %>
-										<span><%- product.discpunt %></span>
+										<span><%- product.discount %>% OFF</span>
 									<% } %>
 								<p><%- product.name %></p>
 								<i class="fas fa-truck"></i>
